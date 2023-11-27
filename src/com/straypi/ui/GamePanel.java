@@ -4,20 +4,22 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 
 import javax.swing.JPanel;
 
 // import com.straypi.character.Player;
 
 public class GamePanel extends JPanel implements Runnable{
-	public final int originalTileSize = 32;
-	public final int scale = 4;
+	public final int originalTileSize = 16;
+	public final int scale = 3;
 	public final int tileSize = originalTileSize * scale;
 
-	public final int maxTileRow = 5;
-	public final int maxTileCol = 9;
-	public final int screenWidth = maxTileCol * tileSize;
-	public final int screenHeight = maxTileRow * tileSize;
+	public final int maxScreenCol = 16;
+    public final int maxScreenRow = 12;
+
+	public final int screenWidth = maxScreenCol * tileSize;
+	public final int screenHeight = maxScreenRow * tileSize;
 
     public final int maxState = 4;
     public static final int titleState = 0;
@@ -28,21 +30,14 @@ public class GamePanel extends JPanel implements Runnable{
     public final int FPS = 120;
     int playerX = 100;
     int playerY = 100;
-    int playerSpeed = 5;
+    int playerSpeed = 3;
 
 	public Thread gameThread;
 	public KeyHandler keyH;
     public MouseHandler mouseH;
     public int gameState;
 
-    // public Player player;
-    // public Map world;
-    // public MiniMap miniMap;
-    // public List<Entity> enemies;
-
 	public GamePanel() {
-        this.setupGame();
-        
         this.keyH = new KeyHandler(this);
         this.mouseH = new MouseHandler(this);
         this.setPreferredSize(new Dimension(screenWidth , screenHeight));
@@ -53,9 +48,6 @@ public class GamePanel extends JPanel implements Runnable{
         this.setFocusable(true);
 	}
 
-	private void setupGame() {
-
-	}
 
     public void startGameThread() {
         gameThread = new Thread(this);
@@ -75,7 +67,7 @@ public class GamePanel extends JPanel implements Runnable{
             lastTime = currentTime;
 
             if (delta >= 1) {
-                // this.update();
+                this.update();
                 this.repaint();
                 delta--;
             }
@@ -84,17 +76,16 @@ public class GamePanel extends JPanel implements Runnable{
 
     
     public void update() {
-        if(keyH.upPressed == true){
+        if (keyH.upPressed) {
             playerY -= playerSpeed;
-        }
-        else if (keyH.downPressed == true){
+        } else if (keyH.downPressed) {
             playerY += playerSpeed;
         }
-        else if (keyH.leftPressed == true){
-            playerY -= playerSpeed;
-        }
-        else if (keyH.rightPressed == true){
-            playerY += playerSpeed;
+    
+        if (keyH.leftPressed) {
+            playerX -= playerSpeed;
+        } else if (keyH.rightPressed) {
+            playerX += playerSpeed;
         }
     }
 
@@ -102,7 +93,7 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
         g2.setColor(Color.white);
-        g2.fillRect(playerX, playerY, tileSize, tileSize);
+        g2.fill(new Rectangle(playerX, playerY, tileSize, tileSize));
         g2.dispose();
     }
 	

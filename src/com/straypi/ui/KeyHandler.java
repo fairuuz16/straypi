@@ -13,6 +13,7 @@ public class KeyHandler implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
+        
     }
 
     @Override
@@ -21,15 +22,19 @@ public class KeyHandler implements KeyListener {
         switch (code) {
             case KeyEvent.VK_W: {
                 upPressed = true;
+                break;
             }
             case KeyEvent.VK_S: {
                 downPressed = true;
+                break;
             }
             case KeyEvent.VK_A: {
                 leftPressed = true;
+                break;
             }
             case KeyEvent.VK_D: {
                 rightPressed = true;
+                break;
             }
             case KeyEvent.VK_ESCAPE: {
                 if (gp.gameState == GamePanel.playState) gp.gameState = GamePanel.pauseState;
@@ -45,19 +50,27 @@ public class KeyHandler implements KeyListener {
         switch (code) {
             case KeyEvent.VK_W: {
                 upPressed = false;
+                break;
             }
             case KeyEvent.VK_S: {
                 downPressed = false;
+                break;
             }
             case KeyEvent.VK_A: {
                 leftPressed = false;
+                break;
             }
             case KeyEvent.VK_D: {
                 rightPressed = false;
+                break;
             }
             case KeyEvent.VK_ESCAPE: {
-                if (gp.gameState == GamePanel.playState) gp.gameState = GamePanel.pauseState;
-                else if (gp.gameState == GamePanel.pauseState) gp.gameState = GamePanel.playState;
+                if (gp.gameState == GamePanel.playState) {
+                    gp.gameState = GamePanel.pauseState;
+                }
+                else if (gp.gameState == GamePanel.pauseState) {
+                    gp.gameState = GamePanel.playState;
+                }
                 break;
             }
         }

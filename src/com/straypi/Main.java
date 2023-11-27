@@ -16,7 +16,7 @@ public class Main {
         gp.startGameThread();
 
         window.pack();
-        // window.setLocationRelativeTo(null);
+        window.setLocationRelativeTo(null);
         window.setVisible(true);
     }
 }
