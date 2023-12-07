@@ -1,35 +1,45 @@
-// package com.straypi.character;
+package com.straypi.character;
 
-// import java.awt.image.BufferedImage;
-// import java.util.List;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
 
-// import com.straypi.ui.GamePanel;
+import com.straypi.ui.GamePanel;
+import com.straypi.ui.KeyHandler;
 
-// public class Player extends Entity {
-//     public final int defaultMaxLife = 100;
+public class Player extends Entity {
+    GamePanel gp;
+    KeyHandler keyH;
+    
+    public Player(GamePanel gp, KeyHandler keyH){
+        this.gp = gp;
+        this.keyH = keyH;
 
-//     public final int screenX;
-//     public final int screenY;
+        setDevaultValues();
+    }
 
-//     public boolean isMovingUp;
-//     public boolean isMovingDown;
-//     public boolean isMovingLeft;
-//     public boolean isMovingRight;
+    public void setDevaultValues(){
+        x = 100;
+        y = 100;
+        speed = 4;
+    }
 
-//     public BufferedImage bulletImg;
-//     public List<Projectile> projectiles;
-//     public int projectileCount;
-//     private int cdCount = 0;
+    public void update(){
+        if (keyH.upPressed) {
+            y -= speed;
+        } else if (keyH.downPressed) {
+            y += speed;
+        }
+    
+        if (keyH.leftPressed) {
+            x -= speed;
+        } else if (keyH.rightPressed) {
+            x += speed;
+        }
+    }
 
-//     public Player(GamePanel gp){
-//         super(gp);
-//         this.loadSprite("/assets/player");
-//         this.screenX = (gp.screenWidth - gp.tileSize)/2;
-//         this.screenY = (gp.screenHeight - gp.tileSize)/2;
-
-//     }
-
-//     private void loadSprite(String string) {
-//     }
-
-// }
+    public void draw(Graphics2D g2){ 
+        g2.setColor(Color.white);
+        g2.fill(new Rectangle(x, y, gp.tileSize, gp.tileSize));
+    }
+}

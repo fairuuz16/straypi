@@ -1,4 +1,4 @@
-package com.straypi.ui;
+package com.straypi.state;
 
 public class EndState {
     

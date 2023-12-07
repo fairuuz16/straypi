@@ -4,9 +4,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 
 import javax.swing.JPanel;
+
+import com.straypi.character.Player;
 
 // import com.straypi.character.Player;
 
@@ -35,11 +36,13 @@ public class GamePanel extends JPanel implements Runnable{
 	public Thread gameThread;
 	public KeyHandler keyH;
     public MouseHandler mouseH;
+    public Player player;
     public int gameState;
 
 	public GamePanel() {
         this.keyH = new KeyHandler(this);
         this.mouseH = new MouseHandler(this);
+        this.player = new Player(this, keyH);
         this.setPreferredSize(new Dimension(screenWidth , screenHeight));
         this.addKeyListener(keyH);
         this.addMouseListener(mouseH);
@@ -76,24 +79,13 @@ public class GamePanel extends JPanel implements Runnable{
 
     
     public void update() {
-        if (keyH.upPressed) {
-            playerY -= playerSpeed;
-        } else if (keyH.downPressed) {
-            playerY += playerSpeed;
-        }
-    
-        if (keyH.leftPressed) {
-            playerX -= playerSpeed;
-        } else if (keyH.rightPressed) {
-            playerX += playerSpeed;
-        }
+        player.update();
     }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
-        g2.setColor(Color.white);
-        g2.fill(new Rectangle(playerX, playerY, tileSize, tileSize));
+        player.draw(g2);
         g2.dispose();
     }
 	
