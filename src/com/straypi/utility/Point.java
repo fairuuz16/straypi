@@ -45,4 +45,14 @@ public class Point {
         return Math.sqrt(dX*dX + dY*dY);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        Point p = (Point)(obj);
+        return this.x == p.x && this.y == p.y;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Point(%d, %d)", this.x, this.y);
+    }
 }

@@ -53,24 +53,24 @@ public class Box {
                 this.pos.y + this.height > box.getX());
     }
     
-    private Point getPoint() {
+    public Point getPoint() {
         return this.pos;
     }
 
-    private int getWidth() {
+    public int getWidth() {
         return this.width;
     }
     
-    private int getHeight() {
+    public int getHeight() {
         return this.height;
     }
     
-    private int getX() {
-        return 0;
+    public int getX() {
+        return this.pos.x;
     }
      
-    private int getY() {
-        return 0;
+    public int getY() {
+        return this.pos.y;
     }
 
 }

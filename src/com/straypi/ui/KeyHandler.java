@@ -4,75 +4,107 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
+
     private GamePanel gp;
-    public boolean upPressed, downPressed, leftPressed, rightPressed;
 
     public KeyHandler(GamePanel gp) {
         this.gp = gp;
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
-        
-    }
-
-    @Override
     public void keyPressed(KeyEvent e) {
-        int code = e.getKeyCode();
-        switch (code) {
-            case KeyEvent.VK_W: {
-                upPressed = true;
-                break;
+        int key = e.getKeyCode();
+
+        switch (key) {
+        case KeyEvent.VK_W: {
+            if (gp.gameState == GamePanel.playState) {
+                gp.player.velY = -gp.player.speed;
+                gp.player.isMovingUp = true;
+                if (gp.player.isMovingDown) gp.player.velY = 0;
             }
-            case KeyEvent.VK_S: {
-                downPressed = true;
-                break;
+            break;
+        }
+        case KeyEvent.VK_S: {
+            if (gp.gameState == GamePanel.playState) {
+                gp.player.velY = gp.player.speed;
+                gp.player.isMovingDown = true;
+                if (gp.player.isMovingUp) gp.player.velY = 0;
             }
-            case KeyEvent.VK_A: {
-                leftPressed = true;
-                break;
+            break;
+        }
+        case KeyEvent.VK_A: {
+            if (gp.gameState == GamePanel.playState) {
+                gp.player.velX = -gp.player.speed;
+                gp.player.direction = gp.player.faceLeft;
+                gp.player.isMovingLeft = true;
+                if (gp.player.isMovingRight) gp.player.velX = 0;
             }
-            case KeyEvent.VK_D: {
-                rightPressed = true;
-                break;
+            break;
+        }
+        case KeyEvent.VK_D: {
+            if (gp.gameState == GamePanel.playState) {
+                gp.player.velX = gp.player.speed;
+                gp.player.direction = gp.player.faceRight;
+                gp.player.isMovingRight = true;
+                if (gp.player.isMovingLeft) gp.player.velX = 0;
             }
-            case KeyEvent.VK_ESCAPE: {
-                if (gp.gameState == GamePanel.playState) gp.gameState = GamePanel.pauseState;
-                else if (gp.gameState == GamePanel.pauseState) gp.gameState = GamePanel.playState;
-                break;
-            }
+            break;
+        }
+        case KeyEvent.VK_ESCAPE: {
+            if (gp.gameState == GamePanel.playState) gp.gameState = GamePanel.pauseState;
+            else if (gp.gameState == GamePanel.pauseState) gp.gameState = GamePanel.playState;
+            break;
+        }
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-      int code = e.getKeyCode();
-        switch (code) {
-            case KeyEvent.VK_W: {
-                upPressed = false;
-                break;
+        int key = e.getKeyCode();
+
+        switch (key) {
+        case KeyEvent.VK_W: {
+            if (gp.gameState == GamePanel.playState) {
+                gp.player.velY = 0;
+                gp.player.isMovingUp = false;
+                if (gp.player.isMovingDown) gp.player.velY = gp.player.speed;
             }
-            case KeyEvent.VK_S: {
-                downPressed = false;
-                break;
+            break;
+        }
+        case KeyEvent.VK_S: {
+            if (gp.gameState == GamePanel.playState) {
+                gp.player.velY = 0;
+                gp.player.isMovingDown = false;
+                if (gp.player.isMovingUp) gp.player.velY = -gp.player.speed;
             }
-            case KeyEvent.VK_A: {
-                leftPressed = false;
-                break;
-            }
-            case KeyEvent.VK_D: {
-                rightPressed = false;
-                break;
-            }
-            case KeyEvent.VK_ESCAPE: {
-                if (gp.gameState == GamePanel.playState) {
-                    gp.gameState = GamePanel.pauseState;
+            break;
+        }
+        case KeyEvent.VK_A: {
+            if (gp.gameState == GamePanel.playState) {
+                gp.player.velX = 0;
+                gp.player.isMovingLeft = false;
+                if (gp.player.isMovingRight) {
+                    gp.player.direction = gp.player.faceRight;
+                    gp.player.velX = gp.player.speed;
                 }
-                else if (gp.gameState == GamePanel.pauseState) {
-                    gp.gameState = GamePanel.playState;
-                }
-                break;
             }
+            break;
+        }
+        case KeyEvent.VK_D: {
+            if (gp.gameState == GamePanel.playState) {
+                gp.player.velX = 0;
+                gp.player.isMovingRight = false;
+                if (gp.player.isMovingLeft) {
+                    gp.player.direction = gp.player.faceLeft;
+                    gp.player.velX = -gp.player.speed;
+                }
+            }
+            break;
+        }
         }
     }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }    
 }
