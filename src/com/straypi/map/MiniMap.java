@@ -9,20 +9,22 @@ import com.straypi.ui.Drawable;
 import com.straypi.ui.GamePanel;
 
 public class MiniMap implements Drawable {
+    
     public static final int unit = 3;
 
     private GamePanel gp;
     private int screenX, screenY;
     private int playerWorldRow, playerWorldCol;
-    
-    public MiniMap(GamePanel gp, int screenX, int screenY){
+
+    public MiniMap(GamePanel gp, int screenX, int screenY) {
         this.gp = gp;
         this.screenX = screenX;
+        this.screenY = screenY;
         this.playerWorldCol = gp.player.cBox.getX()/gp.tileSize;
         this.playerWorldRow = gp.player.cBox.getY()/gp.tileSize;
         gp.foreground.add(this);
     }
-
+    
     @Override
     public void update() {
         this.playerWorldCol = gp.player.cBox.getX()/gp.tileSize;
@@ -68,4 +70,3 @@ public class MiniMap implements Drawable {
         gp.foreground.add(this);
     }
 }
-

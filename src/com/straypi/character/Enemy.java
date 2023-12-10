@@ -9,6 +9,7 @@ import com.straypi.ui.GamePanel;
 import com.straypi.utility.Box;
 
 public class Enemy extends Entity {
+
     private final int offCamera = 0;
     private final int background = 1;
     private final int foreground = 2;
@@ -20,7 +21,7 @@ public class Enemy extends Entity {
     
     public Enemy(GamePanel gp, int worldX, int worldY) {
         super(gp);
-        this.loadSprite("/enemy/slime");
+        this.loadSprite("/enemy/enemy");
         this.healthBarColor = new Color(204, 63, 85);
         this.healthBarStroke = new BasicStroke(gp.scale);
 

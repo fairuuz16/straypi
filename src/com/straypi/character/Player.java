@@ -9,10 +9,11 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 import com.straypi.sound.Sound;
-import com.straypi.ui.GamePanel;
+import com.straypi.ui.*;
 import com.straypi.utility.Box;
 
 public class Player extends Entity {
+
     public final int defaultMaxLife = 50;
 
     public final int screenX;

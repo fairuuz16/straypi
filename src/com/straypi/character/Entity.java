@@ -11,7 +11,8 @@ import com.straypi.ui.Drawable;
 import com.straypi.ui.GamePanel;
 import com.straypi.utility.Box;
 
-public abstract class Entity implements Drawable{
+public abstract class Entity implements Drawable {
+
     protected final int maxFrame = 8;
     protected final int maxType = 3;
     protected final int maxDirection = 2;

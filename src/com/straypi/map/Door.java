@@ -12,6 +12,7 @@ import com.straypi.ui.GamePanel;
 import com.straypi.utility.Box;
 
 public class Door implements Drawable {
+
     public final int tileWidth = 3;
     public final int tileHeight = 2;
     public final int width;

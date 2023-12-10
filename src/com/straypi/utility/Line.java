@@ -1,14 +1,15 @@
 package com.straypi.utility;
 
 public class Line {
+    
     public Point p, q;
 
-    public Line(Line l){
+    public Line(Line l) {
         this.p = new Point(l.getPointP());
         this.q = new Point(l.getPointQ());
     }
 
-    public Line(Point p, Point q){
+    public Line(Point p, Point q) {
         this.p = new Point(p);
         this.q = new Point(q);
     }
@@ -18,7 +19,7 @@ public class Line {
         this.q = new Point(x2, y2);
     }
 
-    public void translate(int dX, int dY){
+    public void translate(int dX, int dY) {
         this.p.translate(dX, dY);
         this.q.translate(dX, dY);
     }
@@ -27,11 +28,11 @@ public class Line {
         return this.p.getDistance(q);
     }
 
-    private Point getPointP() {
+    public Point getPointP() {
         return this.p;
-    }    
-    
-    private Point getPointQ() {
+    }
+
+    public Point getPointQ() {
         return this.q;
     }
 }
