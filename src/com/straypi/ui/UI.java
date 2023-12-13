@@ -11,7 +11,7 @@ import com.straypi.state.*;
 public class UI implements Drawable {
     
     private GamePanel gp;
-    private Font maruMonica;
+    private Font pixelGameFont;
     private State[] states;
 
     public UI(GamePanel gp) {
@@ -23,7 +23,7 @@ public class UI implements Drawable {
         this.states[GamePanel.endState] = new EndState(gp);
 
         try {
-            this.maruMonica = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/font/MaruMonica.ttf"));
+            this.pixelGameFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getClassLoader().getResourceAsStream("font/PixelGameFont.ttf"));
         } catch (FontFormatException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -51,7 +51,7 @@ public class UI implements Drawable {
 
     @Override
     public void draw(Graphics2D g) {
-        g.setFont(maruMonica.deriveFont(Font.PLAIN, 20F));
+        g.setFont(pixelGameFont.deriveFont(Font.PLAIN, 20F));
         g.setColor(Color.WHITE);
 
         switch (gp.gameState) {

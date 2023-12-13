@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 import com.straypi.sound.Sound;
 import com.straypi.ui.Drawable;
 import com.straypi.ui.GamePanel;
-import com.straypi.utility.Box;
+import com.straypi.util.Box;
 
 public class Door implements Drawable {
 
@@ -44,7 +44,7 @@ public class Door implements Drawable {
         gp.background.add(this);
 
         this.sprite = new BufferedImage[maxType];
-        this.loadSprite("/decoration/door.png");
+        this.loadSprite("decoration/door.png");
     }
 
     @Override
@@ -86,7 +86,7 @@ public class Door implements Drawable {
     
     private void loadSprite(String path) {
         try {
-            BufferedImage sprite = ImageIO.read(getClass().getResource(path));
+            BufferedImage sprite = ImageIO.read(getClass().getClassLoader().getResource(path));
             for (int type = 0; type < maxType; type++) {
                 this.sprite[type] = new BufferedImage(width, height, sprite.getType());
                 Graphics2D g = this.sprite[type].createGraphics();

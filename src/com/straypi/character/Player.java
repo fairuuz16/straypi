@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 
 import com.straypi.sound.Sound;
 import com.straypi.ui.*;
-import com.straypi.utility.Box;
+import com.straypi.util.Box;
 
 public class Player extends Entity {
 
@@ -30,7 +30,7 @@ public class Player extends Entity {
 
     public Player(GamePanel gp) {
         super(gp);
-        this.loadSprite("/player/shooter");
+        this.loadSprite("player");
         this.screenX = (gp.screenWidth - gp.tileSize)/2;
         this.screenY = (gp.screenHeight - gp.tileSize)/2;
 
@@ -147,7 +147,7 @@ public class Player extends Entity {
     
     private void loadProjectile() {
     	try {
-			bulletImg = ImageIO.read(getClass().getResourceAsStream("/projectile/BulletPrototype.png"));
+			bulletImg = ImageIO.read(getClass().getClassLoader().getResourceAsStream("projectile/BulletPrototype.png"));
 			BufferedImage resizedBullet = new BufferedImage(6*gp.scale, 6*gp.scale, bulletImg.getType());
             Graphics2D g = resizedBullet.createGraphics();
             g.drawImage(bulletImg, 0, 0, 6*gp.scale, 6*gp.scale, null);

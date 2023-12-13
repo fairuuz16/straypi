@@ -21,12 +21,12 @@ public class Sound {
 
     public Sound() {
         soundURL = new URL[maxType];
-        soundURL[bgmTitle] = getClass().getResource("/sound/bgm/title.wav");
-        soundURL[bgmBattle] = getClass().getResource("/sound/bgm/battle.wav");
-        soundURL[sfxGetHit] = getClass().getResource("/sound/sfx/getHit.wav");
-        soundURL[sfxHitMonster] = getClass().getResource("/sound/sfx/hitMonster.wav");
-        soundURL[sfxWin] = getClass().getResource("/sound/sfx/win.wav");
-        soundURL[sfxGameOver] = getClass().getResource("/sound/sfx/gameOver.wav");
+        soundURL[bgmTitle] = getClass().getClassLoader().getResource("sound/bgm/title.wav");
+        soundURL[bgmBattle] = getClass().getClassLoader().getResource("sound/bgm/battle.wav");
+        soundURL[sfxGetHit] = getClass().getClassLoader().getResource("sound/sfx/getHit.wav");
+        soundURL[sfxHitMonster] = getClass().getClassLoader().getResource("sound/sfx/hitMonster.wav");
+        soundURL[sfxWin] = getClass().getClassLoader().getResource("sound/sfx/win.wav");
+        soundURL[sfxGameOver] = getClass().getClassLoader().getResource("sound/sfx/gameOver.wav");
     }
 
     public void play(int type) {

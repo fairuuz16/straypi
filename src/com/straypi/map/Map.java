@@ -3,6 +3,7 @@ package com.straypi.map;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +13,8 @@ import com.straypi.character.Entity;
 import com.straypi.character.Enemy;
 import com.straypi.ui.Drawable;
 import com.straypi.ui.GamePanel;
-import com.straypi.utility.Box;
-import com.straypi.utility.Point;
+import com.straypi.util.Box;
+import com.straypi.util.Point;
 
 public class Map implements Drawable {
     
@@ -42,7 +43,7 @@ public class Map implements Drawable {
         this.sprite = new BufferedImage[maxTypeRow][maxTypeCol];
         this.world = new Tile[maxWorldRow][maxWorldCol];
         this.enemies = new ArrayList<Entity>();
-        this.loadSprite("/tileset/heaven.png");
+        this.loadSprite("tileset/heaven.png");
     }
 
     @Override
@@ -131,7 +132,7 @@ public class Map implements Drawable {
 
     private void loadSprite(String path) {
         try {
-            BufferedImage sprite = ImageIO.read(getClass().getResource(path));
+            BufferedImage sprite = ImageIO.read(getClass().getClassLoader().getResource(path));
             for (int col = 0; col < maxTypeCol; col++)
             for (int row = 0; row < maxTypeRow; row++) {
                 this.sprite[row][col] = new BufferedImage(gp.tileSize, gp.tileSize, sprite.getType());

@@ -30,7 +30,7 @@ public class EndState extends State {
         this.quitButton = new Button(gp, "QUIT", x, y+=yOffset, width, height);
 
         try {
-            this.bg = ImageIO.read(getClass().getResourceAsStream("/state/menu/background.png"));
+            this.bg = ImageIO.read(getClass().getClassLoader().getResourceAsStream("state/menu/background.png"));
             BufferedImage resizedBg = new BufferedImage(gp.screenWidth, gp.screenHeight, bg.getType());
             Graphics2D g = resizedBg.createGraphics();
             g.drawImage(bg, 0, 0, gp.screenWidth, gp.screenHeight, null);

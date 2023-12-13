@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 
 import com.straypi.ui.Drawable;
 import com.straypi.ui.GamePanel;
-import com.straypi.utility.Box;
+import com.straypi.util.Box;
 
 public class Projectile implements Drawable{
 	
@@ -74,6 +74,6 @@ public class Projectile implements Drawable{
 		if(done) return;
 		
 		g.drawImage(gp.player.bulletImg, screenX, screenY, null);
-//		g.drawRect(cBox.getX() - gp.player.worldX + gp.player.screenX, cBox.getY() - gp.player.worldY + gp.player.screenY, cBox.getWidth(), cBox.getHeight());
+		// g.drawRect(cBox.getX() - gp.player.worldX + gp.player.screenX, cBox.getY() - gp.player.worldY + gp.player.screenY, cBox.getWidth(), cBox.getHeight());
 	}
 }

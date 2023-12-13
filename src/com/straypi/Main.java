@@ -6,17 +6,15 @@ import com.straypi.ui.GamePanel;
 
 public class Main {
         public static void main(String[] args) throws Exception {
-        JFrame window  = new JFrame();
+        JFrame window  = new JFrame("StrayPi");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setResizable(false);
-        window.setTitle("StrayPi");
 
         GamePanel gp = new GamePanel();
         window.add(gp);
         gp.startThread();
 
         window.pack();
-        window.setLocationRelativeTo(null);
+        window.setResizable(false);
         window.setVisible(true);
     }
 }

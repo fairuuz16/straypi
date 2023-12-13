@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 
 import com.straypi.ui.Drawable;
 import com.straypi.ui.GamePanel;
-import com.straypi.utility.Box;
+import com.straypi.util.Box;
 
 public abstract class Entity implements Drawable {
 
@@ -91,9 +91,9 @@ public abstract class Entity implements Drawable {
     protected void loadSprite(String path) {
         try {
             BufferedImage[] sprite = new BufferedImage[maxType];
-            sprite[idleState] = ImageIO.read(getClass().getResourceAsStream(path + "/idle.png"));
-            sprite[moveState] = ImageIO.read(getClass().getResourceAsStream(path + "/move.png"));
-            sprite[attackState] = ImageIO.read(getClass().getResourceAsStream(path + "/attack.png"));
+            sprite[idleState] = ImageIO.read(getClass().getClassLoader().getResourceAsStream(path + "/idle.png"));
+            sprite[moveState] = ImageIO.read(getClass().getClassLoader().getResourceAsStream(path + "/move.png"));
+            sprite[attackState] = ImageIO.read(getClass().getClassLoader().getResourceAsStream(path + "/attack.png"));
 
             for (int type = 0; type < maxType; type++) 
             for (int direction = 0; direction < maxDirection; direction++)

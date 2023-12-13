@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-import com.straypi.utility.*;
+import com.straypi.util.*;
 
 public class RandomMap {
     private int[][] map;

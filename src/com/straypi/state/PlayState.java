@@ -25,7 +25,7 @@ public class PlayState extends State {
         this.healthBarStroke = new BasicStroke(gp.scale);
         
         try {
-            this.heart = ImageIO.read(getClass().getResourceAsStream("/decoration/heart.png"));
+            this.heart = ImageIO.read(getClass().getClassLoader().getResourceAsStream("decoration/heart.png"));
             BufferedImage resizedHeart = new BufferedImage(gp.tileSize, gp.tileSize, heart.getType());
             Graphics2D g = resizedHeart.createGraphics();
             g.drawImage(heart, 0, 0, gp.tileSize, gp.tileSize, null);

@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 
 import com.straypi.sound.Sound;
 import com.straypi.ui.GamePanel;
-import com.straypi.utility.Box;
+import com.straypi.util.Box;
 
 public class Enemy extends Entity {
 
@@ -21,7 +21,7 @@ public class Enemy extends Entity {
     
     public Enemy(GamePanel gp, int worldX, int worldY) {
         super(gp);
-        this.loadSprite("/enemy/enemy");
+        this.loadSprite("enemy");
         this.healthBarColor = new Color(204, 63, 85);
         this.healthBarStroke = new BasicStroke(gp.scale);
 
