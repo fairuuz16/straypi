@@ -111,11 +111,14 @@ public class Player extends Entity {
     }
 
     public void setPosition() {
-        this.worldX = gp.world.worldStart.x*gp.tileSize;
-        this.worldY = gp.world.worldStart.y*gp.tileSize;
+        this.worldX = gp.world.worldStart.x * gp.tileSize;
+        this.worldY = gp.world.worldStart.y * gp.tileSize;
         this.cBox = new Box(worldX, worldY, gp.tileSize, gp.tileSize);
-        this.cBox.setPadding(3*gp.tileSize/4, gp.tileSize/4, 0, gp.tileSize/4);
-    }
+        this.cBox.setPadding(3 * gp.tileSize / 4, gp.tileSize / 4, 0, gp.tileSize / 4);
+    
+        // Reset max life and life for every new floor
+        resetMaxLife();
+    }    
 
     public void reset() {
         this.frameCount = 0;
@@ -157,4 +160,10 @@ public class Player extends Entity {
 			e.printStackTrace();
 		}
 	}
+
+    public void resetMaxLife() {
+        this.maxLife = defaultMaxLife;
+        this.life = maxLife;
+    }
+
 }
